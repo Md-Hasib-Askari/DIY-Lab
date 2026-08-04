@@ -122,7 +122,7 @@ The external call is the problem, and the logs now say so. Before/after diff:
 Prerequisites: .NET SDK and Docker.
 
 ```bash
-# 1. Start Postgres (port 5433, db labdb, user/pass lab/lab)
+# 1. Start Postgres (port 5432, db labdb, user/pass lab/lab)
 docker compose up -d --wait
 
 # 2. Run the API. Creates the schema from the EF migration, 
@@ -180,7 +180,7 @@ The next `dotnet run` re-applies the migration and seeds the million rows again.
 | `Data/AppDbContext.cs` | EF Core context |
 | `Migrations/` | EF Core schema migration (applied at startup via `Migrate()`) |
 | `Infrastructure/FakeHttpMessageHandler.cs` | fake external API: 2s delay, HTTP 200 |
-| `docker-compose.yml` | Postgres on port 5433, network `observability-lab-net` |
+| `docker-compose.yml` | Postgres on port 5432, network `observability-lab-net` |
 | `appsettings.Development.json` | connection string, seed size |
 | `scripts/capture-snapshots.sh` | regenerates `snapshots/` (DB, API, requests, files) |
 | `snapshots/` | captured console and curl output for phases 3 and 4 |
@@ -191,7 +191,9 @@ Configuration:
 | Setting | Where | Effect |
 | --- | --- | --- |
 | `SeedPatients` | `appsettings.Development.json` | seed size (1,000,000 default); the unindexed scan gets faster as you lower it |
-| Connection string | `appsettings.Development.json` | `labdb` on `localhost:5433` |
+| Connection string | `appsettings.Development.json` | `labdb` on `localhost:5432` |
+
+**Note:** Increase seed count value in `appsettings.Development.json`, and uncomment indexing code to see the time difference. Check `ObservabilityPart1/Data/AppDbContext.cs`.
 
 ## Results
 
