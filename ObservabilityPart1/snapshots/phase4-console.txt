@@ -1,0 +1,51 @@
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (408ms) [Parameters=[@Format='?'], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Name"
+      FROM "Patients" AS p
+      WHERE p."Name" = @Format
+      LIMIT 1
+info: Program[0]
+      [43b33a05-750e-443d-b914-1fe1e616fbb8] DB lookup: 408ms
+info: Program[0]
+      [43b33a05-750e-443d-b914-1fe1e616fbb8] External call: 2000ms
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Int32)], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Drug", p."PatientId"
+      FROM "Prescriptions" AS p
+      WHERE p."PatientId" = @p
+info: Program[0]
+      [43b33a05-750e-443d-b914-1fe1e616fbb8] Total: 2413ms
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (385ms) [Parameters=[@Format='?'], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Name"
+      FROM "Patients" AS p
+      WHERE p."Name" = @Format
+      LIMIT 1
+info: Program[0]
+      [254430d0-d6e4-445a-ba52-2ed8c49ee3d6] DB lookup: 386ms
+info: Program[0]
+      [254430d0-d6e4-445a-ba52-2ed8c49ee3d6] External call: 2000ms
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Int32)], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Drug", p."PatientId"
+      FROM "Prescriptions" AS p
+      WHERE p."PatientId" = @p
+info: Program[0]
+      [254430d0-d6e4-445a-ba52-2ed8c49ee3d6] Total: 2390ms
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (324ms) [Parameters=[@Format='?'], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Name"
+      FROM "Patients" AS p
+      WHERE p."Name" = @Format
+      LIMIT 1
+info: Program[0]
+      [920b0ce2-6517-4a18-81bc-0cbbde793032] DB lookup: 324ms
+info: Program[0]
+      [920b0ce2-6517-4a18-81bc-0cbbde793032] External call: 2000ms
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Int32)], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Drug", p."PatientId"
+      FROM "Prescriptions" AS p
+      WHERE p."PatientId" = @p
+info: Program[0]
+      [920b0ce2-6517-4a18-81bc-0cbbde793032] Total: 2328ms

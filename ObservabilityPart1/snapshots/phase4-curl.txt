@@ -1,0 +1,3 @@
+GET /phase4/patients/1 -> HTTP 200 in 2.422199s
+GET /phase4/patients/2 -> HTTP 200 in 2.391791s
+GET /phase4/patients/3 -> HTTP 200 in 2.330381s
