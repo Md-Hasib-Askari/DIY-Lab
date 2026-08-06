@@ -25,8 +25,9 @@ or third-party package.
 
 ## How it works
 
-Both endpoints accept the same JSON body and do the same work: map the DTO to an `Order`,
-assign the next Id, store it in an in-memory list, and return `201 Created`.
+Both endpoints accept the same JSON body and delegate to the same `OrderService.CreateOrder`,
+which maps the DTO to an `Order`, assigns the next Id, stores it in an in-memory list, and
+returns `201 Created`.
 
 They differ only in the `catch` block:
 
@@ -53,8 +54,9 @@ curl -X POST http://localhost:5225/orders/correct \
 ### Trigger the catch block
 
 Omit the `items` field. `OrderDto.Items` defaults to `null`, so the request binds
-successfully, the handler dereferences the null list, and a `NullReferenceException` is
-thrown inside the `try`. Both endpoints return 500 and log it:
+successfully, `OrderService.CreateOrder` dereferences the null list, and a
+`NullReferenceException` is thrown inside the endpoint's `try`. Both endpoints return 500
+and log it:
 
 ```bash
 curl -X POST http://localhost:5225/orders/wrong \
@@ -80,7 +82,7 @@ fail: ObservabilityPart2.Controllers.OrderController[0]
       System.ArgumentNullException: Value cannot be null. (Parameter 'source')
          at System.Linq.ThrowHelper.ThrowArgumentNullException(ExceptionArgument argument)
          at System.Linq.Enumerable.Select[TSource,TResult](IEnumerable`1 source, Func`2 selector)
-         at ObservabilityPart2.Controllers.OrderController.CreateOrderCorrect(OrderDto dto)
+         at ObservabilityPart2.Services.OrderService.CreateOrder(OrderDto dto)
 ```
 
 ## Getting started
@@ -105,14 +107,16 @@ Ready-made requests (happy path plus catch-triggering bodies for both endpoints)
 | File | Purpose |
 | --- | --- |
 | `Controllers/OrderController.cs` | `CreateOrderWrong` and `CreateOrderCorrect`, the lab's two endpoints |
+| `Services/OrderService.cs` | business logic: DTO-to-model mapping and the in-memory store |
 | `Models/Order.cs` | `Order` and `OrderItem` entities |
 | `DTOs/OrderDto.cs` | `OrderDto` and `OrderItemDto` request records |
-| `Program.cs` | host setup |
+| `Program.cs` | host setup, registers `OrderService` as a singleton |
 | `ObservabilityPart2.http` | ready-made requests for both routes and the error case |
 | `appsettings.json` | logging configuration |
 
-All data is stored in memory (`IList<Order>` in the controller) and resets every time the
-app restarts. No database is involved.
+All data is stored in memory (`IList<Order>` in `OrderService`). The service is registered
+as a singleton, so orders persist across requests and only reset when the app restarts.
+No database is involved.
 
 ## Results
 

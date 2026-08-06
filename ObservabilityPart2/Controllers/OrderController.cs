@@ -1,40 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
 using ObservabilityPart2.DTOs;
-using ObservabilityPart2.Models;
+using ObservabilityPart2.Services;
 
 namespace ObservabilityPart2.Controllers;
 
 [ApiController]
 [Route("/orders")]
-public class OrderController(ILogger<OrderController> logger) : ControllerBase
+public class OrderController(OrderService orderService, ILogger<OrderController> logger) : ControllerBase
 {
-    private readonly IList<Order> _orders = [];
-    private int _nextId = 1;
-
     [HttpPost("wrong")]
     public IActionResult CreateOrderWrong(OrderDto dto)
     {
         try
         {
-            // Map DTO to the domain model, assigning the next Id
-            var order = new Order
-            {
-                Id = _nextId++,
-                CustomerId = dto.CustomerId,
-                CustomerName = dto.CustomerName,
-                Items =
-                [
-                    .. dto.Items!.Select(i => new OrderItem
-                    {
-                        Product = i.Product,
-                        Quantity = i.Quantity,
-                        UnitPrice = i.UnitPrice,
-                    }),
-                ],
-            };
-
-            // Persist to the in-memory store
-            _orders.Add(order);
+            // Delegate the business logic to the service
+            var order = orderService.CreateOrder(dto);
 
             // Return 201 Created with the location of the new order
             return Created($"/orders/{order.Id}", order);
@@ -52,25 +32,8 @@ public class OrderController(ILogger<OrderController> logger) : ControllerBase
     {
         try
         {
-            // Map DTO to the domain model, assigning the next Id
-            var order = new Order
-            {
-                Id = _nextId++,
-                CustomerId = dto.CustomerId,
-                CustomerName = dto.CustomerName,
-                Items =
-                [
-                    .. dto.Items!.Select(i => new OrderItem
-                    {
-                        Product = i.Product,
-                        Quantity = i.Quantity,
-                        UnitPrice = i.UnitPrice,
-                    }),
-                ],
-            };
-
-            // Persist to the in-memory store
-            _orders.Add(order);
+            // Delegate the business logic to the service
+            var order = orderService.CreateOrder(dto);
 
             // Return 201 Created with the location of the new order
             return Created($"/orders/{order.Id}", order);
