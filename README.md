@@ -18,6 +18,7 @@ tweaks, and real implementations. Pick a lab, run it, and see the idea in action
 | --- | --- |
 | [Observability Part 1](ObservabilityPart1/README.md) | Diagnosing a slow .NET API with only built-in tooling: `ILogger`, `Stopwatch`, and per-request correlation IDs. |
 | [Observability Part 2](ObservabilityPart2/README.md) | Two identical order endpoints, one logging with `Console.WriteLine`, one with structured `ILogger` properties. |
+| [Observability Part 4](ObservabilityPart4/README.md) | A correlation ID that survives a service hop: middleware, Serilog `LogContext`, and a forwarding `DelegatingHandler`. |
 
 ## Getting started
 
