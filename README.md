@@ -20,6 +20,7 @@ tweaks, and real implementations. Pick a lab, run it, and see the idea in action
 | [Observability Part 2](ObservabilityPart2/README.md) | Two identical order endpoints, one logging with `Console.WriteLine`, one with structured `ILogger` properties. |
 | Observability Part 3 | No lab in this repo. That post was theory only, with nothing runnable to build. |
 | [Observability Part 4](ObservabilityPart4/README.md) | A correlation ID that survives a service hop: middleware, Serilog `LogContext`, and a forwarding `DelegatingHandler`. |
+| [Observability Part 5](ObservabilityPart5/README.md) | Four endpoints, one per metric (latency, throughput, error rate, saturation), hammered by `loadtests/` and instrumented server-side: `System.Diagnostics.Metrics` histograms plus resource-usage gauges, exposed via a minimal OpenTelemetry Prometheus `/metrics` scrape. |
 
 ## Getting started
 
