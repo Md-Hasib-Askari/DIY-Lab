@@ -16,4 +16,14 @@
   <Folder Name="/labs/observability/part6-tail-latency/">
     <Project Path="labs/observability/part6-tail-latency/ObservabilityPart6.csproj" />
   </Folder>
+  <Folder Name="/labs/observability/part7-distributed-tracing/">
+    <Folder Name="/labs/observability/part7-distributed-tracing/src/">
+      <Folder Name="/labs/observability/part7-distributed-tracing/src/AppointmentApi/">
+        <Project Path="labs/observability/part7-distributed-tracing/src/AppointmentApi/AppointmentApi.csproj" />
+      </Folder>
+      <Folder Name="/labs/observability/part7-distributed-tracing/src/PrescriptionApi/">
+        <Project Path="labs/observability/part7-distributed-tracing/src/PrescriptionApi/PrescriptionApi.csproj" />
+      </Folder>
+    </Folder>
+  </Folder>
 </Solution>

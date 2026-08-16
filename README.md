@@ -23,14 +23,15 @@ labs/
 │   ├── part2-structured-logging/ ObservabilityPart2
 │   ├── part4-correlation-id/    ObservabilityPart4
 │   ├── part5-metrics/           ObservabilityPart5
-│   └── part6-tail-latency/      ObservabilityPart6
+│   ├── part6-tail-latency/      ObservabilityPart6
+│   └── part7-distributed-tracing/  AppointmentApi + PrescriptionApi
 └── system-thinking/             next series (coming soon)
 ```
 
 Labs are grouped by series, and each series by part number. Each lab folder is a
-self-contained .NET project with its own README, configuration, and load tests, so
+self-contained set of .NET projects with its own README, configuration, and load tests, so
 labs stay isolated from one another and new series can be added as a new folder under
-`labs/`.
+`labs/`. Part 7 contains two projects, one per service, and is run from two terminals.
 
 ## Labs
 
@@ -42,6 +43,7 @@ labs stay isolated from one another and new series can be added as a new folder 
 | Observability | Part 4 | [`labs/observability/part4-correlation-id`](labs/observability/part4-correlation-id) | A correlation ID that survives a service hop: middleware, Serilog `LogContext`, and a forwarding `DelegatingHandler`. |
 | Observability | Part 5 | [`labs/observability/part5-metrics`](labs/observability/part5-metrics) | Four endpoints, one per metric (latency, throughput, error rate, saturation), hammered by `loadtests/` and instrumented server-side: `System.Diagnostics.Metrics` histograms plus resource-usage gauges, exposed via a minimal OpenTelemetry Prometheus `/metrics` scrape. |
 | Observability | Part 6 | [`labs/observability/part6-tail-latency`](labs/observability/part6-tail-latency) | A patient lookup API with a hidden 5% slow path, showing why tail percentiles expose what averages hide. |
+| Observability | Part 7 | [`labs/observability/part7-distributed-tracing`](labs/observability/part7-distributed-tracing) | Two services, one trace: AppointmentApi calls PrescriptionApi, whose "validation" method hides a 3-second delay. A console exporter names the guilty span; a background job moves it off the request path. |
 
 ## Getting started
 

@@ -1,0 +1,22 @@
+@appointments = http://localhost:5091
+@prescriptions = http://localhost:5092
+
+### Create an appointment. AppointmentApi calls PrescriptionApi over HTTP,
+### whose validation method hides a Task.Delay(3000). Expect ~3.2s before the fix.
+POST {{appointments}}/appointments
+Content-Type: application/json
+
+{
+  "patientName": "Alice",
+  "doctorName": "Dr. Smith",
+  "reason": "Routine checkup"
+}
+
+### Ask PrescriptionApi directly. Alone, its 3-second validate-prescription
+### span shows up as the root of its own trace.
+POST {{prescriptions}}/prescriptions/validate
+Content-Type: application/json
+
+{
+  "id": 1
+}
