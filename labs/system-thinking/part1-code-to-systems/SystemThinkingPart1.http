@@ -1,0 +1,6 @@
+@SystemThinkingPart1_HostAddress = http://localhost:5130
+
+GET {{SystemThinkingPart1_HostAddress}}/products
+Accept: application/json
+
+###

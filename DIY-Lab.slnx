@@ -26,4 +26,8 @@
       </Folder>
     </Folder>
   </Folder>
+  <Folder Name="/labs/system-thinking/" />
+  <Folder Name="/labs/system-thinking/part1-code-to-systems/">
+    <Project Path="labs/system-thinking/part1-code-to-systems/SystemThinkingPart1.csproj" />
+  </Folder>
 </Solution>
