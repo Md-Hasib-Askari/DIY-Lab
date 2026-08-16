@@ -10,35 +10,54 @@
 </div>
 
 A collection of hands-on labs for exploring system design patterns, performance
-tweaks, and real implementations. Pick a lab, check out its branch, run it, and see
-the idea in action.
+tweaks, and real implementations. Every lab lives in this repository, on the `main`
+branch, as its own standalone project.
+
+## Repository layout
+
+```
+DIY-Lab.slnx                     the solution that links every lab
+labs/
+├── observability/               current series: observability
+│   ├── part1-slow-api/          ObservabilityPart1
+│   ├── part2-structured-logging/ ObservabilityPart2
+│   ├── part4-correlation-id/    ObservabilityPart4
+│   ├── part5-metrics/           ObservabilityPart5
+│   └── part6-tail-latency/      ObservabilityPart6
+└── system-thinking/             next series (coming soon)
+```
+
+Labs are grouped by series, and each series by part number. Each lab folder is a
+self-contained .NET project with its own README, configuration, and load tests, so
+labs stay isolated from one another and new series can be added as a new folder under
+`labs/`.
 
 ## Labs
 
-Each lab lives on its own branch, with the project at the repository root. Check out
-the branch and follow that lab's README.
-
-| Lab | Branch | Topic |
-| --- | --- | --- |
-| Observability Part 1 | [`Part1`](https://github.com/Md-Hasib-Askari/DIY-Lab/tree/Part1) | Diagnosing a slow .NET API with only built-in tooling: `ILogger`, `Stopwatch`, and per-request correlation IDs. |
-| Observability Part 2 | [`Part2`](https://github.com/Md-Hasib-Askari/DIY-Lab/tree/Part2) | Two identical order endpoints, one logging with `Console.WriteLine`, one with structured `ILogger` properties. |
-| Observability Part 3 | — | No lab in this repo. That post was theory only, with nothing runnable to build. |
-| Observability Part 4 | [`Part4`](https://github.com/Md-Hasib-Askari/DIY-Lab/tree/Part4) | A correlation ID that survives a service hop: middleware, Serilog `LogContext`, and a forwarding `DelegatingHandler`. |
-| Observability Part 5 | [`Part5`](https://github.com/Md-Hasib-Askari/DIY-Lab/tree/Part5) | Four endpoints, one per metric (latency, throughput, error rate, saturation), hammered by `loadtests/` and instrumented server-side: `System.Diagnostics.Metrics` histograms plus resource-usage gauges, exposed via a minimal OpenTelemetry Prometheus `/metrics` scrape. |
+| Series | Lab | Project | Topic |
+| --- | --- | --- | --- |
+| Observability | Part 1 | [`labs/observability/part1-slow-api`](labs/observability/part1-slow-api) | Diagnosing a slow .NET API with only built-in tooling: `ILogger`, `Stopwatch`, and per-request correlation IDs. |
+| Observability | Part 2 | [`labs/observability/part2-structured-logging`](labs/observability/part2-structured-logging) | Two identical order endpoints, one logging with `Console.WriteLine`, one with structured `ILogger` properties. |
+| Observability | Part 3 | — | No lab in this repo. That post was theory only, with nothing runnable to build. |
+| Observability | Part 4 | [`labs/observability/part4-correlation-id`](labs/observability/part4-correlation-id) | A correlation ID that survives a service hop: middleware, Serilog `LogContext`, and a forwarding `DelegatingHandler`. |
+| Observability | Part 5 | [`labs/observability/part5-metrics`](labs/observability/part5-metrics) | Four endpoints, one per metric (latency, throughput, error rate, saturation), hammered by `loadtests/` and instrumented server-side: `System.Diagnostics.Metrics` histograms plus resource-usage gauges, exposed via a minimal OpenTelemetry Prometheus `/metrics` scrape. |
+| Observability | Part 6 | [`labs/observability/part6-tail-latency`](labs/observability/part6-tail-latency) | A patient lookup API with a hidden 5% slow path, showing why tail percentiles expose what averages hide. |
 
 ## Getting started
 
 ```bash
-# Pick a lab and check out its branch
-git checkout Part1
+# Build every lab at once
+dotnet build
 
-# Follow the lab's README for setup steps, then run it
-dotnet run
+# Run a single lab (each listens on its own port)
+dotnet run --project labs/observability/part2-structured-logging
 ```
 
-Some labs require Docker for a backing database. Check the lab's own README for the
-exact steps and ports.
+Each lab's README has the exact setup steps for that lab. Some require Docker for a
+backing database or extra tooling (k6, Python) for load tests; check the lab's own
+README for the details.
 
 ## License
 
 [GPL-3.0](LICENSE)
+

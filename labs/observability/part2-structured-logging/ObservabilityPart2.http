@@ -1,0 +1,23 @@
+@ObservabilityPart2_HostAddress = http://localhost:5225
+
+# Missing "items" -> throws NullReferenceException -> hits the catch block
+POST {{ObservabilityPart2_HostAddress}}/orders/wrong
+Content-Type: application/json
+
+{
+  "customerId": 42,
+  "customerName": "Alice"
+}
+
+###
+
+# Missing "items" -> throws NullReferenceException -> hits the catch block
+POST {{ObservabilityPart2_HostAddress}}/orders/correct
+Content-Type: application/json
+
+{
+  "customerId": 42,
+  "customerName": "Alice"
+}
+
+###

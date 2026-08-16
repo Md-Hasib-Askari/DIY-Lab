@@ -1,0 +1,6 @@
+@ObservabilityPart6_HostAddress = http://localhost:5118
+
+GET {{ObservabilityPart6_HostAddress}}/patients/1
+Accept: application/json
+
+###

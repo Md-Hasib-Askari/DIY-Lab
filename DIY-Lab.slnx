@@ -1,0 +1,19 @@
+<Solution>
+  <Folder Name="/labs/" />
+  <Folder Name="/labs/observability/" />
+  <Folder Name="/labs/observability/part1-slow-api/">
+    <Project Path="labs/observability/part1-slow-api/ObservabilityPart1.csproj" />
+  </Folder>
+  <Folder Name="/labs/observability/part2-structured-logging/">
+    <Project Path="labs/observability/part2-structured-logging/ObservabilityPart2.csproj" />
+  </Folder>
+  <Folder Name="/labs/observability/part4-correlation-id/">
+    <Project Path="labs/observability/part4-correlation-id/ObservabilityPart4.csproj" />
+  </Folder>
+  <Folder Name="/labs/observability/part5-metrics/">
+    <Project Path="labs/observability/part5-metrics/ObservabilityPart5.csproj" />
+  </Folder>
+  <Folder Name="/labs/observability/part6-tail-latency/">
+    <Project Path="labs/observability/part6-tail-latency/ObservabilityPart6.csproj" />
+  </Folder>
+</Solution>

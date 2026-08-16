@@ -1,0 +1,22 @@
+[01:01:24.242 INF] [crm] [e3502f1b-476f-4bbe-9e42-9818d74db37e] Creating customer Carol
+[01:01:24.242 INF] [crm] [72301156-ab8d-4fe1-b015-0d7b5f5e160d] Creating customer Alice
+[01:01:24.242 INF] [crm] [bd1cd2bc-c393-4e55-9f50-eb827f173906] Creating customer Bob
+[01:01:24.344 INF] [crm.store] [e3502f1b-476f-4bbe-9e42-9818d74db37e] Customer 3 saved
+[01:01:24.344 INF] [crm.store] [72301156-ab8d-4fe1-b015-0d7b5f5e160d] Customer 2 saved
+[01:01:24.344 INF] [crm.store] [bd1cd2bc-c393-4e55-9f50-eb827f173906] Customer 1 saved
+[01:01:24.408 INF] [notifications] [72301156-ab8d-4fe1-b015-0d7b5f5e160d] Welcome email requested for customer 2
+[01:01:24.408 INF] [notifications] [bd1cd2bc-c393-4e55-9f50-eb827f173906] Welcome email requested for customer 1
+[01:01:24.408 INF] [notifications] [e3502f1b-476f-4bbe-9e42-9818d74db37e] Welcome email requested for customer 3
+[01:01:24.528 INF] [notifications] [bd1cd2bc-c393-4e55-9f50-eb827f173906] Welcome email sent to bob@example.com
+[01:01:24.528 INF] [notifications] [72301156-ab8d-4fe1-b015-0d7b5f5e160d] Welcome email sent to alice@example.com
+[01:01:24.528 INF] [notifications] [e3502f1b-476f-4bbe-9e42-9818d74db37e] Welcome email sent to carol@example.com
+[01:01:24.538 INF] [crm] [bd1cd2bc-c393-4e55-9f50-eb827f173906] Notification service replied 202
+[01:01:24.538 INF] [crm] [72301156-ab8d-4fe1-b015-0d7b5f5e160d] Notification service replied 202
+[01:01:24.538 INF] [crm] [e3502f1b-476f-4bbe-9e42-9818d74db37e] Notification service replied 202
+[01:01:24.546 INF] [crm] [order-4417-retry] Creating customer Dave
+[01:01:24.626 INF] [crm.store] [order-4417-retry] Customer 4 saved
+[01:01:24.630 INF] [notifications] [order-4417-retry] Welcome email requested for customer 4
+[01:01:24.750 INF] [notifications] [order-4417-retry] Welcome email sent to dave@example.com
+[01:01:24.752 INF] [crm] [order-4417-retry] Notification service replied 202
+[01:01:24.774 INF] [notifications] [57b25493-dc64-410e-a266-69cdaa0f8965] Welcome email requested for customer 99
+[01:01:24.894 INF] [notifications] [57b25493-dc64-410e-a266-69cdaa0f8965] Welcome email sent to orphan@example.com

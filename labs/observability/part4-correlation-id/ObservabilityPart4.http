@@ -1,0 +1,29 @@
+@host = http://localhost:5038
+
+### CRM creates a customer. The ID is generated here and forwarded to the notification service.
+POST {{host}}/crm/customers
+Content-Type: application/json
+
+{
+  "name": "Alice",
+  "email": "alice@example.com"
+}
+
+### Same call with a caller-supplied ID. The whole trace uses this exact value.
+POST {{host}}/crm/customers
+Content-Type: application/json
+X-Correlation-ID: my-own-trace-id
+
+{
+  "name": "Bob",
+  "email": "bob@example.com"
+}
+
+### The notification service called directly, with no header: it starts its own unrelated trace.
+POST {{host}}/notifications/welcome-email
+Content-Type: application/json
+
+{
+  "customerId": 99,
+  "email": "orphan@example.com"
+}

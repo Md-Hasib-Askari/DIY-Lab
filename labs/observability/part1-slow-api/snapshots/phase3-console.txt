@@ -1,0 +1,55 @@
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (368ms) [Parameters=[@Format='?'], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Name"
+      FROM "Patients" AS p
+      WHERE p."Name" = @Format
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Int32)], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Drug", p."PatientId"
+      FROM "Prescriptions" AS p
+      WHERE p."PatientId" = @p
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (351ms) [Parameters=[@Format='?'], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Name"
+      FROM "Patients" AS p
+      WHERE p."Name" = @Format
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Int32)], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Drug", p."PatientId"
+      FROM "Prescriptions" AS p
+      WHERE p."PatientId" = @p
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (379ms) [Parameters=[@Format='?'], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Name"
+      FROM "Patients" AS p
+      WHERE p."Name" = @Format
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (0ms) [Parameters=[@p='?' (DbType = Int32)], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Drug", p."PatientId"
+      FROM "Prescriptions" AS p
+      WHERE p."PatientId" = @p
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (273ms) [Parameters=[@Format='?'], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Name"
+      FROM "Patients" AS p
+      WHERE p."Name" = @Format
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (2ms) [Parameters=[@p='?' (DbType = Int32)], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Drug", p."PatientId"
+      FROM "Prescriptions" AS p
+      WHERE p."PatientId" = @p
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (488ms) [Parameters=[@Format='?'], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Name"
+      FROM "Patients" AS p
+      WHERE p."Name" = @Format
+      LIMIT 1
+info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+      Executed DbCommand (1ms) [Parameters=[@p='?' (DbType = Int32)], CommandType='Text', CommandTimeout='300']
+      SELECT p."Id", p."Drug", p."PatientId"
+      FROM "Prescriptions" AS p
+      WHERE p."PatientId" = @p

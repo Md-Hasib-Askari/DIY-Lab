@@ -1,0 +1,17 @@
+@ObservabilityPart5_HostAddress = http://localhost:5120
+
+GET {{ObservabilityPart5_HostAddress}}/patients/2
+Accept: application/json
+
+###
+
+# id 1 is deliberately slow: this call takes ~3 s
+GET {{ObservabilityPart5_HostAddress}}/patients/1
+Accept: application/json
+
+###
+
+# /metrics endpoint is provided by the OpenTelemetry 
+# SDK and is used to expose metrics in Prometheus format
+GET {{ObservabilityPart5_HostAddress}}/metrics
+Accept: text/plain
