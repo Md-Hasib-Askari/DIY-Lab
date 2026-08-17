@@ -30,4 +30,7 @@
   <Folder Name="/labs/system-thinking/part1-code-to-systems/">
     <Project Path="labs/system-thinking/part1-code-to-systems/SystemThinkingPart1.csproj" />
   </Folder>
+  <Folder Name="/labs/system-thinking/part2-n-plus-one/">
+    <Project Path="labs/system-thinking/part2-n-plus-one/SystemThinkingPart2.csproj" />
+  </Folder>
 </Solution>

@@ -26,7 +26,8 @@ labs/
 │   ├── part6-tail-latency/      ObservabilityPart6
 │   └── part7-distributed-tracing/  AppointmentApi + PrescriptionApi
 └── system-thinking/             current series: system thinking
-    └── part1-code-to-systems/   SystemThinkingPart1
+    ├── part1-code-to-systems/   SystemThinkingPart1
+    └── part2-n-plus-one/        SystemThinkingPart2
 ```
 
 Labs are grouped by series, and each series by part number. Each lab folder is a
@@ -46,6 +47,7 @@ labs stay isolated from one another and new series can be added as a new folder 
 | Observability | Part 6 | [`labs/observability/part6-tail-latency`](labs/observability/part6-tail-latency) | A patient lookup API with a hidden 5% slow path, showing why tail percentiles expose what averages hide. |
 | Observability | Part 7 | [`labs/observability/part7-distributed-tracing`](labs/observability/part7-distributed-tracing) | Two services, one trace: AppointmentApi calls PrescriptionApi, whose "validation" method hides a 3-second delay. A console exporter names the guilty span; a background job moves it off the request path. |
 | System Thinking | Part 1 | [`labs/system-thinking/part1-code-to-systems`](labs/system-thinking/part1-code-to-systems) | A `/products` API that goes from instant to 500ms on purpose, then gets hammered by k6 at 1 and 50 virtual users. The same code tells two different stories; an `IMemoryCache` fix shows what a single knob can do. |
+| System Thinking | Part 2 | [`labs/system-thinking/part2-n-plus-one`](labs/system-thinking/part2-n-plus-one) | An Orders API that issues 51 queries per request on purpose: the classic EF Core N+1 problem. A correlation ID plus EF's own SQL logging make the query storm countable, and `.Include` + `.AsNoTracking` bring it down to 1. |
 
 ## Getting started
 

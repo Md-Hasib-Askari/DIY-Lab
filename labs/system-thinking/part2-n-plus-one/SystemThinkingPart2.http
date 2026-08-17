@@ -1,0 +1,25 @@
+@SystemThinkingPart2_HostAddress = http://localhost:5151
+
+# Phase 1: scaffold, orders + items in one query
+GET {{SystemThinkingPart2_HostAddress}}/phase1/orders
+Accept: application/json
+
+###
+
+# Phase 2: the N+1 problem, on purpose (N+1 queries)
+GET {{SystemThinkingPart2_HostAddress}}/phase2/orders
+Accept: application/json
+
+###
+
+# Phase 3: same code as phase 2 (watch the console)
+GET {{SystemThinkingPart2_HostAddress}}/phase3/orders
+Accept: application/json
+
+###
+
+# Phase 4: the fix, one query
+GET {{SystemThinkingPart2_HostAddress}}/phase4/orders
+Accept: application/json
+
+###
