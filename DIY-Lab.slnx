@@ -33,4 +33,7 @@
   <Folder Name="/labs/system-thinking/part2-n-plus-one/">
     <Project Path="labs/system-thinking/part2-n-plus-one/SystemThinkingPart2.csproj" />
   </Folder>
+  <Folder Name="/labs/system-thinking/part5-cpu-vs-io/">
+    <Project Path="labs/system-thinking/part5-cpu-vs-io/SystemThinkingPart5.csproj" />
+  </Folder>
 </Solution>

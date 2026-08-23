@@ -1,0 +1,31 @@
+@SystemThinkingPart5_HostAddress = http://localhost:5155
+
+### Step 1: the baseline. Fast, because nothing else is running.
+GET {{SystemThinkingPart5_HostAddress}}/phase1/users
+Accept: application/json
+
+### Step 2: the broken pair. Send the report first, then hit /users while it runs.
+GET {{SystemThinkingPart5_HostAddress}}/phase2/report
+Accept: application/json
+
+###
+GET {{SystemThinkingPart5_HostAddress}}/phase2/users
+Accept: application/json
+
+### Step 3: what the thread pool is doing right now.
+GET {{SystemThinkingPart5_HostAddress}}/threadpool
+Accept: application/json
+
+### Step 4: the fixed pair. This one answers instantly with a job id.
+POST {{SystemThinkingPart5_HostAddress}}/phase4/report
+Accept: application/json
+
+### Paste the jobId from the 202 above.
+GET {{SystemThinkingPart5_HostAddress}}/report/status/4f408584
+Accept: application/json
+
+###
+GET {{SystemThinkingPart5_HostAddress}}/phase4/users
+Accept: application/json
+
+###
