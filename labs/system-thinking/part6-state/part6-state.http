@@ -1,0 +1,16 @@
+@server1 = http://localhost:5001
+@server2 = http://localhost:5002
+
+### Step 1 - Login on Server1: creates a session in Server1's in-memory cache
+# @name login
+POST {{server1}}/login?user=hasib
+
+### Step 2a - Profile on the SAME server (Server1): works, session is found
+GET {{server1}}/profile?sessionId={{login.response.body.sessionId}}
+
+### Step 2b - Profile on a DIFFERENT server (Server2): broken, session not found (401)
+### This is the broken state: in-memory cache is per-instance, so Server2 never saw the login.
+### Fix: use a distributed cache (e.g. Redis) so that all instances share the same session state.
+GET {{server2}}/profile?sessionId={{login.response.body.sessionId}}
+
+###
