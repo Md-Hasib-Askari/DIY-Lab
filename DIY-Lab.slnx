@@ -36,4 +36,8 @@
   <Folder Name="/labs/system-thinking/part5-cpu-vs-io/">
     <Project Path="labs/system-thinking/part5-cpu-vs-io/SystemThinkingPart5.csproj" />
   </Folder>
+  <Folder Name="/labs/system-thinking/part9-layered-architecture/">
+    <Project Path="labs/system-thinking/part9-layered-architecture/SystemThinkingPart9.csproj" />
+    <Project Path="labs/system-thinking/part9-layered-architecture/Tests/SystemThinkingPart9.Tests.csproj" />
+  </Folder>
 </Solution>

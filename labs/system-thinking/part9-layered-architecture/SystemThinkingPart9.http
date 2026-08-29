@@ -1,0 +1,61 @@
+@SystemThinkingPart9_HostAddress = http://localhost:5159
+
+# Legacy path: fat controller, direct AppDbContext access, rule inline
+POST {{SystemThinkingPart9_HostAddress}}/legacy/orders
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "quantity": 100,
+  "unitPrice": 150
+}
+
+###
+
+# Legacy path: same rule, quantity below the approval threshold
+POST {{SystemThinkingPart9_HostAddress}}/legacy/orders
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "quantity": 10,
+  "unitPrice": 150
+}
+
+###
+
+# Layered path: slim controller, Domain decides the rule, Infrastructure persists it
+POST {{SystemThinkingPart9_HostAddress}}/orders
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "quantity": 100,
+  "unitPrice": 150
+}
+
+###
+
+# Layered path: same rule, quantity below the approval threshold
+POST {{SystemThinkingPart9_HostAddress}}/orders
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "quantity": 10,
+  "unitPrice": 150
+}
+
+###
+
+# Layered path: invalid quantity, rejected by Domain and turned into 400
+POST {{SystemThinkingPart9_HostAddress}}/orders
+Content-Type: application/json
+
+{
+  "productId": 1,
+  "quantity": 0,
+  "unitPrice": 150
+}
+
+###
