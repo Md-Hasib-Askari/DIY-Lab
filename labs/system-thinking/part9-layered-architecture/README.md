@@ -46,7 +46,9 @@ through the same `AppDbContext` and can run at the same time.
 | `POST /orders` | Inside `Domain/Order.cs` | The `Order` constructor decides `Status` when the object is built, before anything else runs |
 
 Both endpoints accept the same body, `{ productId, quantity, unitPrice }`, and return
-the same shape. `status: 0` means `Approved`, `status: 1` means `NeedsApproval`.
+the same shape. `OrderStatus` carries a `[JsonConverter(typeof(JsonStringEnumConverter))]`
+attribute (see `Domain/Order.cs`), so `status` serializes as the string `"Approved"` or
+`"NeedsApproval"` rather than its underlying `0`/`1` value.
 
 ## The two paths
 
@@ -64,7 +66,7 @@ curl -X POST http://localhost:5159/legacy/orders \
 ```
 
 ```json
-{ "id": 1, "productId": 1, "quantity": 100, "unitPrice": 150, "totalPrice": 15000, "status": 1 }
+{ "id": 1, "productId": 1, "quantity": 100, "unitPrice": 150, "totalPrice": 15000, "status": "NeedsApproval" }
 ```
 
 ### Layered: Domain, Application, Infrastructure, Api
@@ -90,7 +92,7 @@ curl -X POST http://localhost:5159/orders \
 ```
 
 ```json
-{ "id": 1, "productId": 1, "quantity": 100, "unitPrice": 150, "totalPrice": 15000, "status": 1 }
+{ "id": 1, "productId": 1, "quantity": 100, "unitPrice": 150, "totalPrice": 15000, "status": "NeedsApproval" }
 ```
 
 A quantity of zero or less breaks the domain's own guard clause, which throws
@@ -175,7 +177,7 @@ The next `dotnet run` re-applies the migration against a fresh database.
 
 | File | Purpose |
 | --- | --- |
-| `Domain/Order.cs` | the approval rule, framework-free, decided in the constructor |
+| `Domain/Order.cs` | the approval rule, framework-free, decided in the constructor; `OrderStatus` serializes as a string via `JsonStringEnumConverter` |
 | `Application/CreateOrderService.cs` | the one use case, orchestrates Domain and the repository interface |
 | `Application/IOrderRepository.cs` | the interface Application depends on, with no knowledge of EF Core |
 | `Infrastructure/AppDbContext.cs` | EF Core context, holds both `Orders` and `LegacyOrders` |

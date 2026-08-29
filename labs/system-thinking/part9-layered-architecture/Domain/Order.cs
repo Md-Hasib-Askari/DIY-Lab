@@ -1,9 +1,12 @@
+using System.Text.Json.Serialization;
+
 namespace SystemThinkingPart9.Domain;
 
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum OrderStatus
 {
     Approved,
-    NeedsApproval
+    NeedsApproval,
 }
 
 // Lab Step 4, part 1: the business rule lives here, in a plain class with no
@@ -34,7 +37,5 @@ public class Order
 
     // EF Core materializes rows through this constructor via reflection.
     // Nothing outside this class can build a partially valid Order.
-    private Order()
-    {
-    }
+    private Order() { }
 }
