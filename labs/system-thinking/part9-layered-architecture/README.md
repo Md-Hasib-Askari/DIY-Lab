@@ -56,8 +56,8 @@ attribute (see `Domain/Order.cs`), so `status` serializes as the string `"Approv
 
 `LegacyOrdersController` validates the request, computes `TotalPrice`, decides
 `Status` against a threshold constant, and calls `SaveChangesAsync`, all inside one
-action method. `LegacyOrder` itself is anemic: a bag of public setters with no rule of
-its own. This is the version introductory tutorials teach.
+action method. `LegacyOrder` itself has no rule of its own: it is a plain set of public
+properties with public setters. This is the version introductory tutorials teach.
 
 ```bash
 curl -X POST http://localhost:5159/legacy/orders \
