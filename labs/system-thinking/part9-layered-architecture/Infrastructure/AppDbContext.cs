@@ -18,10 +18,14 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
             .Property(o => o.UnitPrice).HasPrecision(18, 2);
         modelBuilder.Entity<Order>()
             .Property(o => o.TotalPrice).HasPrecision(18, 2);
+        modelBuilder.Entity<Order>()
+            .Property(o => o.Status).HasConversion<string>();
 
         modelBuilder.Entity<LegacyOrder>()
             .Property(o => o.UnitPrice).HasPrecision(18, 2);
         modelBuilder.Entity<LegacyOrder>()
             .Property(o => o.TotalPrice).HasPrecision(18, 2);
+        modelBuilder.Entity<LegacyOrder>()
+            .Property(o => o.Status).HasConversion<string>();
     }
 }
