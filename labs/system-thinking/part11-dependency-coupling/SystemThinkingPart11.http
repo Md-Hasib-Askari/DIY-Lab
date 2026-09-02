@@ -1,0 +1,32 @@
+@SystemThinkingPart11_HostAddress = http://localhost:5171
+
+# Coupled path: OrderService, InvoiceService and NotificationService each
+# build their own SqlOrderRepository with "new"
+POST {{SystemThinkingPart11_HostAddress}}/coupled/orders
+Content-Type: application/json
+
+{
+  "customerId": "11111111-1111-1111-1111-111111111111",
+  "total": 249.99
+}
+
+###
+
+GET {{SystemThinkingPart11_HostAddress}}/coupled/orders
+
+###
+
+# Decoupled path: every service depends on IOrderRepository, registered once
+POST {{SystemThinkingPart11_HostAddress}}/decoupled/orders
+Content-Type: application/json
+
+{
+  "customerId": "11111111-1111-1111-1111-111111111111",
+  "total": 249.99
+}
+
+###
+
+GET {{SystemThinkingPart11_HostAddress}}/decoupled/orders
+
+###

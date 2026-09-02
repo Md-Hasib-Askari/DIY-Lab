@@ -43,4 +43,7 @@
   <Folder Name="/labs/system-thinking/part10-vertical-slice-architecture/">
     <Project Path="labs/system-thinking/part10-vertical-slice-architecture/SystemThinkingPart10.csproj" />
   </Folder>
+  <Folder Name="/labs/system-thinking/part11-dependency-coupling/">
+    <Project Path="labs/system-thinking/part11-dependency-coupling/SystemThinkingPart11.csproj" />
+  </Folder>
 </Solution>

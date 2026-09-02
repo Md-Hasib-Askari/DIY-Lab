@@ -30,7 +30,8 @@ labs/
     ├── part2-n-plus-one/        SystemThinkingPart2
     ├── part5-cpu-vs-io/         SystemThinkingPart5
     ├── part9-layered-architecture/  SystemThinkingPart9 + Tests
-    └── part10-vertical-slice-architecture/  SystemThinkingPart10
+    ├── part10-vertical-slice-architecture/  SystemThinkingPart10
+    └── part11-dependency-coupling/  SystemThinkingPart11
 ```
 
 Labs are grouped by series, and each series by part number. Each lab folder is a
@@ -54,6 +55,7 @@ labs stay isolated from one another and new series can be added as a new folder 
 | System Thinking | Part 5 | [`labs/system-thinking/part5-cpu-vs-io`](labs/system-thinking/part5-cpu-vs-io) | A CPU-bound `/report` and an I/O-bound `/users` sharing one thread pool. Run together, `/users` goes from a 51ms p95 to 11 seconds with zero errors and no code change. `await` fixes one endpoint; only a background worker fixes the other. |
 | System Thinking | Part 9 | [`labs/system-thinking/part9-layered-architecture`](labs/system-thinking/part9-layered-architecture) | The same approval rule built two ways: a fat controller reading `AppDbContext` directly, and a Domain/Application/Infrastructure/Api split where the rule lives in a framework-free class. The payoff is a unit test that needs zero setup. |
 | System Thinking | Part 10 | [`labs/system-thinking/part10-vertical-slice-architecture`](labs/system-thinking/part10-vertical-slice-architecture) | The same three operations (create, read, cancel an order) built two ways: a shared controller/service/repository split, and one file per operation under `Features/Orders/`. Adding a fourth operation and running `git diff --stat` on both shows the payoff: four existing files touched versus one new file and one registration line. |
+| System Thinking | Part 11 | [`labs/system-thinking/part11-dependency-coupling`](labs/system-thinking/part11-dependency-coupling) | The same three services built two ways: each constructing `SqlOrderRepository` directly with `new`, versus each depending on an `IOrderRepository` registered once in `Program.cs`. Adding a required constructor parameter to the repository breaks three files on the coupled path and zero on the decoupled path. |
 
 ## Getting started
 
