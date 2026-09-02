@@ -1,8 +1,5 @@
-using System.Text.Json.Serialization;
-
 namespace SystemThinkingPart10.Layered.Domain;
 
-[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum OrderStatus
 {
     Pending,

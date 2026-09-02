@@ -7,9 +7,10 @@ using SystemThinkingPart10.Layered.Infrastructure;
 var builder = WebApplication.CreateBuilder(args);
 
 // Lab Step 1 and Step 2: one DbContext serves both paths. The layered path
-// also needs its service and repository registered through DI; the slice
-// path needs nothing registered here at all, because each endpoint reaches
-// AppDbContext directly (see Features/Orders/*.cs).
+// registers its service and its repository one interface at a time. The
+// slice path registers nothing per operation: one scan of the assembly
+// picks up every Handler under Features/, so adding a slice adds no line
+// here (see Features/Orders/*.cs).
 builder.Services.AddDbContext<AppDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("Default"))
 );
@@ -17,6 +18,10 @@ builder.Services.AddDbContext<AppDbContext>(opt =>
 builder.Services.AddScoped<IOrderRepository, EfOrderRepository>();
 builder.Services.AddScoped<OrderService>();
 builder.Services.AddControllers();
+
+// One scan finds every IRequestHandler in this assembly, including the
+// nested Handler class inside each slice.
+builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<SliceOrder>());
 
 var app = builder.Build();
 
