@@ -40,4 +40,7 @@
     <Project Path="labs/system-thinking/part9-layered-architecture/SystemThinkingPart9.csproj" />
     <Project Path="labs/system-thinking/part9-layered-architecture/Tests/SystemThinkingPart9.Tests.csproj" />
   </Folder>
+  <Folder Name="/labs/system-thinking/part10-vertical-slice-architecture/">
+    <Project Path="labs/system-thinking/part10-vertical-slice-architecture/SystemThinkingPart10.csproj" />
+  </Folder>
 </Solution>

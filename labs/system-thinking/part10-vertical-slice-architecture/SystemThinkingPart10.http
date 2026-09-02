@@ -1,0 +1,65 @@
+@SystemThinkingPart10_HostAddress = http://localhost:5160
+
+# Layered path: create, through OrdersController -> OrderService -> EfOrderRepository
+POST {{SystemThinkingPart10_HostAddress}}/layered/orders
+Content-Type: application/json
+
+{
+  "customerId": "11111111-1111-1111-1111-111111111111",
+  "total": 249.99
+}
+
+###
+
+# Slice path: create, entirely inside Features/Orders/CreateOrder.cs
+POST {{SystemThinkingPart10_HostAddress}}/slices/orders
+Content-Type: application/json
+
+{
+  "customerId": "11111111-1111-1111-1111-111111111111",
+  "total": 249.99
+}
+
+###
+
+# Layered path: invalid total, rejected before OrderService is ever reached
+POST {{SystemThinkingPart10_HostAddress}}/layered/orders
+Content-Type: application/json
+
+{
+  "customerId": "11111111-1111-1111-1111-111111111111",
+  "total": 0
+}
+
+###
+
+# Slice path: same invalid input, rejected inside the same file that created it
+POST {{SystemThinkingPart10_HostAddress}}/slices/orders
+Content-Type: application/json
+
+{
+  "customerId": "11111111-1111-1111-1111-111111111111",
+  "total": 0
+}
+
+###
+
+# Layered path: read one order (replace {id} with an id from a Create response)
+GET {{SystemThinkingPart10_HostAddress}}/layered/orders/{id}
+
+###
+
+# Slice path: read one order
+GET {{SystemThinkingPart10_HostAddress}}/slices/orders/{id}
+
+###
+
+# Layered path: cancel
+POST {{SystemThinkingPart10_HostAddress}}/layered/orders/{id}/cancel
+
+###
+
+# Slice path: cancel
+POST {{SystemThinkingPart10_HostAddress}}/slices/orders/{id}/cancel
+
+###
