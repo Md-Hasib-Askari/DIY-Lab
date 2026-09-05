@@ -1,0 +1,75 @@
+@SystemThinkingPart12_HostAddress = http://localhost:5172
+
+# ---------- Coupled: Order, Payment and Notification all read Customer.Address ----------
+
+POST {{SystemThinkingPart12_HostAddress}}/coupled/customers
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Ada Lovelace",
+  "address": "12 Analytical Engine Way"
+}
+
+###
+
+GET {{SystemThinkingPart12_HostAddress}}/coupled/customers
+
+###
+
+POST {{SystemThinkingPart12_HostAddress}}/coupled/orders/1/ship
+
+###
+
+POST {{SystemThinkingPart12_HostAddress}}/coupled/payments/1/charge
+Content-Type: application/json
+
+{
+  "amount": 249.99
+}
+
+###
+
+POST {{SystemThinkingPart12_HostAddress}}/coupled/notifications/1
+
+###
+
+# ---------- Decoupled: each module keeps its own small view ----------
+
+POST {{SystemThinkingPart12_HostAddress}}/decoupled/customers
+Content-Type: application/json
+
+{
+  "id": 1,
+  "name": "Ada Lovelace",
+  "address": "12 Analytical Engine Way",
+  "taxId": "TAX-90210"
+}
+
+###
+
+GET {{SystemThinkingPart12_HostAddress}}/decoupled/orders/1
+
+###
+
+GET {{SystemThinkingPart12_HostAddress}}/decoupled/payments/1
+
+###
+
+# Change the address once. Watch the console: one event, two modules react.
+PUT {{SystemThinkingPart12_HostAddress}}/decoupled/customers/1/address
+Content-Type: application/json
+
+{
+  "newAddress": "88 Baker Street"
+}
+
+###
+
+GET {{SystemThinkingPart12_HostAddress}}/decoupled/orders/1
+
+###
+
+GET {{SystemThinkingPart12_HostAddress}}/decoupled/payments/1
+
+###

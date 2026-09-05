@@ -46,4 +46,7 @@
   <Folder Name="/labs/system-thinking/part11-dependency-coupling/">
     <Project Path="labs/system-thinking/part11-dependency-coupling/SystemThinkingPart11.csproj" />
   </Folder>
+  <Folder Name="/labs/system-thinking/part12-boundaries/">
+    <Project Path="labs/system-thinking/part12-boundaries/SystemThinkingPart12.csproj" />
+  </Folder>
 </Solution>
